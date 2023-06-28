@@ -1,42 +1,55 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:MauiSqlServer.ViewModel"
+             x:DataType="viewmodel:MainViewModel"
              x:Class="MauiSqlServer.MainPage">
 
-    <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
+    <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, *"
+          ColumnDefinitions="*, *"
+          RowSpacing="15">
+        <Label Grid.Row="0" Grid.Column="0"
+               Text="Server"
+               FontSize="Medium"/>
+        <Entry Grid.Row="0" Grid.Column="1"
+               Text="{Binding Connection.Server}"
+               HorizontalTextAlignment="End"/>
 
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
+        <Label Grid.Row="1" Grid.Column="0"
+               Text="Database"
+               FontSize="Medium"/>
+        <Entry Grid.Row="1" Grid.Column="1"
+               Text="{Binding Connection.Database}"
+               HorizontalTextAlignment="End"/>
 
-            <Label
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
+        <Label Grid.Row="2" Grid.Column="0"
+               Text="Username"
+               FontSize="Medium"/>
+        <Entry Grid.Row="2" Grid.Column="1"
+               Text="{Binding Connection.User}"
+               HorizontalTextAlignment="End"/>
 
-            <Label
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
+        <Label Grid.Row="3" Grid.Column="0"
+               Text="Password"
+               FontSize="Medium"/>
+        <Entry Grid.Row="3" Grid.Column="1"
+               Text="{Binding Connection.Password}"
+               IsPassword="True"
+               HorizontalTextAlignment="End"/>
 
-            <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
+        <Label Grid.Row="4" Grid.Column="0"
+               Text="Table Name"
+               FontSize="Medium"/>
+        <Entry Grid.Row="4" Grid.Column="1"
+               Text="{Binding TableName}"
+               HorizontalTextAlignment="End"/>
 
-        </VerticalStackLayout>
-    </ScrollView>
+        <Button Grid.Row="5" Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Text="Connect"
+                FontSize="Medium"
+                Command="{Binding ConnectCommand}"/>
+    </Grid>
 
 </ContentPage>
 

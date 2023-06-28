@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using MauiSqlServer.ViewModel;
 
 namespace MauiSqlServer;
 
@@ -18,6 +19,10 @@ public static class MauiProgram
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
+
+		builder.Services.AddSingleton<MainPage>();
+
+		builder.Services.AddTransient<MainViewModel>();
 
 		return builder.Build();
 	}
